@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>test</title>
+</head>
+<body>
+    <form action="http://localhost:3000/login" method="POST">
+        ID : <input type="text" name="id" id="id"> <br>
+        PWD : <input type="pwd" name="pwd" id="pwd"> <br>
+        <button>Submit</button>
+        
+    </form>
+</body>
+
+<script>
+    function registerFood(evt) {
+  evt.preventDefault(); /* POST 이벤트 중지 */
+  const foodname = evt.target.id.value;
+  const foodsize = evt.target.pwd.value;
+  if (!foodname || !foodsize) {
+    return alert('이름과 개수를 모두 입력하세요');
+  }
+
+  const url = '/login';
+  const data = { foodname, foodsize };
+  fetch('/login', {
+    method: 'POST',
+    body: JSON.stringify(data),
+  });
+}
+
+document.querySelector('form').addEventListener('submit', registerFood);
+
+</script>
+</html>
