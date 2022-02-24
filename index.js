@@ -2,7 +2,7 @@ const express = require('express')
 const app = express()
 const ejs = require('ejs')
 const cors = require('cors');
-const bodyParser = require('body-parser')
+app.use(express.json())
 
 app.get('/',(req,res)=>{
     res.render("index.ejs")
