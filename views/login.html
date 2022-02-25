@@ -24,16 +24,21 @@
     return alert('이름과 개수를 모두 입력하세요');
   }
 
-  const url = '/login';
+  const url = 'https://b2n7r7nk8h.execute-api.ap-northeast-2.amazonaws.com/loginAPI /login';
   const data = { id, pwd };
-  fetch('/login', {
+  fetch('https://b2n7r7nk8h.execute-api.ap-northeast-2.amazonaws.com/loginAPI/login', {
     method: 'POST',
     headers : {
-    'Content-Type': 'application/json'
+    'Content-Type': 'application/json',
+    'redirected':'true'
   },
     body: JSON.stringify(data),
-  });
-  console.log(data);
+  }).then((res)=>{
+        return res.json()
+         
+  }).then((json)=>{
+        console.log(json);
+  })
 }
 
 document.querySelector('form').addEventListener('submit', registerFood);
